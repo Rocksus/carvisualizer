@@ -2,7 +2,13 @@ import { createRoot } from 'react-dom/client'
 import React, { useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 
-export function Box(props) {
+
+type Props = {
+  color: string
+  position: [number, number, number]
+}
+
+export function Box({color, position}: Props) {
   // This reference will give us direct access to the mesh
   const meshRef = useRef()
   // Set up state for the hovered and active state
@@ -14,14 +20,14 @@ export function Box(props) {
   // Return view, these are regular three.js elements expressed in JSX
   return (
     <mesh
-      {...props}
       ref={meshRef}
+      position={position}
       scale={active ? 2 : 1}
       onClick={(event) => setActive(!active)}
       onPointerOver={(event) => setHover(true)}
       onPointerOut={(event) => setHover(false)}>
       <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} />
+      <meshStandardMaterial color={color} />
     </mesh>
   )
 }
