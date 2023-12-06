@@ -2,8 +2,13 @@ import { useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { useFrame, useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { MeshPhysicalMaterial } from "three";
 
-export function Polestar({ isRunning, ...props }) {
+type Props = {
+    carColor: string
+}
+
+export function Polestar({ carColor, ...props}: Props) {
   const ref = useRef();
   const { nodes, scene, materials, animations } = useLoader(
     GLTFLoader,
@@ -11,6 +16,15 @@ export function Polestar({ isRunning, ...props }) {
   );
 
   const { actions } = useAnimations(animations, ref);
+
+  const paintColor = new MeshPhysicalMaterial({
+      roughness: 0.8,
+      metalness: 0.2,
+      color: carColor,
+      envMapIntensity: 0.75,
+      clearcoatRoughness: 0,
+      clearcoat: 1
+    })
 
   return (
     <group {...props} dispose={null}>
@@ -20,7 +34,7 @@ export function Polestar({ isRunning, ...props }) {
             castShadow
             receiveShadow
             geometry={nodes.Polestar_1_Polestar_1_Car_Paint_0.geometry}
-            material={materials.Polestar_1_Car_Paint}
+            material={paintColor}
           />
           <mesh
             castShadow
