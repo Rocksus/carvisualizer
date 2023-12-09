@@ -6,9 +6,10 @@ import { MeshPhysicalMaterial } from "three";
 
 type Props = {
     carColor: string
+    position: [number, number, number]
 }
 
-export function Polestar({ carColor, ...props}: Props) {
+export function Polestar({ carColor, position}: Props) {
   const ref = useRef();
   const { nodes, scene, materials, animations } = useLoader(
     GLTFLoader,
@@ -27,7 +28,7 @@ export function Polestar({ carColor, ...props}: Props) {
     })
 
   return (
-    <group {...props} dispose={null}>
+    <group position={position} dispose={null}>
       <group scale={0.01}>
         <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
           <mesh

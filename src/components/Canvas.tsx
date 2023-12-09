@@ -28,7 +28,7 @@ export function AppCanvas({ carColor }: Props) {
         <color attach="background" args={['#15151a']} />
         <directionalLight position={[10, 10, 5]} intensity={2} />
         <directionalLight position={[-10, -10, -5]} intensity={1} />
-        <Polestar carColor={carColor} />
+        <Polestar carColor={carColor} position={[0, -1.161, 0]} />
         {/* <Box color={carColor} position={[-1.2, 0, 0]} />
             <Box color={carColor} position={[1.2, 0, 0]} /> */}
 
