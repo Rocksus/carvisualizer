@@ -27,7 +27,6 @@ export function Polestar({ carColor, velgColor, position}: Props) {
       clearcoatRoughness: 0,
       clearcoat: 1
     })
-    console.log(materials.Polestar1_Rim_Chrome.color)
 
     materials.Polestar1_Rim_Chrome = new MeshPhysicalMaterial({
       roughness: 0.2,
