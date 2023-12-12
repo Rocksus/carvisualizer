@@ -6,10 +6,11 @@ import { MeshPhysicalMaterial } from "three";
 
 type Props = {
     carColor: string
+    velgColor: string
     position: [number, number, number]
 }
 
-export function Polestar({ carColor, position}: Props) {
+export function Polestar({ carColor, velgColor, position}: Props) {
   const ref = useRef();
   const { nodes, scene, materials, animations } = useLoader(
     GLTFLoader,
@@ -25,6 +26,13 @@ export function Polestar({ carColor, position}: Props) {
       envMapIntensity: 0.75,
       clearcoatRoughness: 0,
       clearcoat: 1
+    })
+    console.log(materials.Polestar1_Rim_Chrome.color)
+
+    materials.Polestar1_Rim_Chrome = new MeshPhysicalMaterial({
+      roughness: 0.2,
+      metalness: 0.6,
+      color: velgColor,
     })
 
   return (
