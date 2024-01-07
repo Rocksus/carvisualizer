@@ -9,12 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
     "@react-three/drei": "^9.89.0",
     "@react-three/fiber": "^8.15.11",
     "@react-three/postprocessing": "^2.15.11",
     "@types/react-color": "^3.0.10",
     "@types/three": "^0.159.0",
     "@types/tinycolor2": "^1.4.6",
+    "framer-motion": "^10.17.9",
     "next": "14.0.3",
     "react": "^18",
     "react-color": "^2.19.3",
